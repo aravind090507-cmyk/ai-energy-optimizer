@@ -1,0 +1,90 @@
+:root {
+  /* ---- Palette: deep indigo grid, amber current, cyan flow, violet AI ---- */
+  --bg-0: #080B14;
+  --bg-1: #0D1220;
+  --bg-2: #121a2e;
+  --panel: rgba(23, 31, 51, 0.55);
+  --panel-border: rgba(255, 255, 255, 0.08);
+  --panel-border-hi: rgba(255, 255, 255, 0.16);
+
+  --text-hi: #F4F6FB;
+  --text-mid: #A6AFC4;
+  --text-low: #6B7590;
+
+  --amber: #F5A623;
+  --amber-dim: rgba(245, 166, 35, 0.15);
+  --cyan: #35D4E0;
+  --cyan-dim: rgba(53, 212, 224, 0.15);
+  --violet: #9B87F5;
+  --violet-dim: rgba(155, 135, 245, 0.15);
+  --green: #4ADE80;
+  --green-dim: rgba(74, 222, 128, 0.15);
+  --red: #F5636B;
+  --red-dim: rgba(245, 99, 107, 0.15);
+
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  --radius-sm: 8px;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background:
+    radial-gradient(ellipse 900px 500px at 15% -10%, rgba(155, 135, 245, 0.14), transparent),
+    radial-gradient(ellipse 900px 600px at 90% 0%, rgba(53, 212, 224, 0.10), transparent),
+    var(--bg-0);
+  color: var(--text-hi);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Subtle circuit-grid backdrop */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(ellipse 1200px 800px at 50% 0%, black, transparent 75%);
+  z-index: 0;
+}
+
+h1, h2, h3, h4 { font-family: var(--font-display); margin: 0; letter-spacing: -0.01em; }
+p { margin: 0; }
+
+::selection { background: var(--violet-dim); color: var(--text-hi); }
+
+.mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+
+button { font-family: var(--font-body); cursor: pointer; }
+
+.glass {
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
